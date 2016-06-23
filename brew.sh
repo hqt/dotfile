@@ -47,7 +47,6 @@ brew install ringojs
 brew install narwhal
 
 # Install more recent versions of some macOS tools.
-brew install vim --override-system-vi
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/openssh
 brew install homebrew/dupes/screen
@@ -110,11 +109,20 @@ brew install zopfli
 
 # personal tools for work - hqthao
 echo "install hqthao working utilities ..."
+
+# android
 brew install gradle
 brew install android-sdk
 brew install dex2jar
+
+# tmux
 brew install tmux
+brew install reattach-to-user-namespace --wrap-pbcopy-pbpaste && brew link reattach-to-user-namespace
+
+# vim
+brew install vim --override-system-vi
 brew install macvim
+
 brew install mongodb
 brew install redis
 
