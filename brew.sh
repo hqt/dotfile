@@ -118,6 +118,7 @@ brew install dex2jar
 # tmux
 brew install tmux
 brew install reattach-to-user-namespace --wrap-pbcopy-pbpaste && brew link reattach-to-user-namespace
+gem install tmuxinator
 
 # vim
 brew install vim --override-system-vi
