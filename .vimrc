@@ -1,12 +1,73 @@
 " Settings {{{
+" Pathogen configuration
+" call pathogen#infect()
+
+" Vundle configuration
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" " alternatively, pass a path where Vundle should install plugins
+" "call vundle#begin('~/some/path/here')
+"
+" " let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Add plugins from here
+
+Plugin 'ctrlpvim/ctrlp.vim'             " fuzzy finding. <Ctrl+O> for viewing option
+Plugin 'mileszs/ack.vim'                " ack plugin for vim. can be used for Ag as well
+Plugin 'mru.vim'                        " finding files in mru
+Plugin 'scrooloose/nerdTree'            " directory tree, press :ns
+Plugin 'vim-airline/vim-airline'        " vim theme. base on powerline
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'chriskempson/tomorrow-theme'    " another Vim theme compare to solarize
+"Plugin 'altercation/vim-colors-solarized' " solarize theme for vim
+Plugin 'morhetz/gruvbox'                " Color scheme for vim
+Plugin 'skammer/vim-css-color'          " css color for css file
+Plugin 'tpope/vim-commentary'           " comment code utilities. gcc(line) gc(visual mode -> block) gc(normal mode -> motion)
+Plugin 'tpope/vim-surround'             " change surrounding (paren, bracket, tag ...) in pair (cs and ds)
+Plugin 'tpope/vim-endwise'              " wisely add end in Ruby
+Plugin 'godlygeek/tabular'              " format code tabular
+Plugin 'scrooloose/syntastic'           " syntax check programming languages (run :si or :SyntasticInfo)
+Plugin 'ternjs/tern_for_vim'            " Javascript autocomplete base on Tern
+Plugin 'ervandew/supertab'              " Simple autocompletion base on typed words
+Plugin 'tpope/vim-fugitive'             " Git wrapper.
+Plugin 'airblade/vim-gitgutter'         " Show git diff at sidebar. maybe conflict with bookmark
+Plugin 'gcmt/wildfire.vim'              " smart select closed text object (base on paren)
+Plugin 't9md/vim-choosewin'             " choose window in vim like vimium :D can use :cw or :f (simulate Vimimum)
+Plugin 'MattesGroeger/vim-bookmarks'    " global bookmark in VIM (ma and mm hotkey)
+
+" All of your Plugins must be added before the following line
+ call vundle#end()            " required
+ filetype plugin indent on    " required
+ " To ignore plugin indent changes, instead use:
+ "filetype plugin on
+ "
+ " Brief help
+ " :PluginList       - lists configured plugins
+ " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+ " :PluginSearch foo - searches for foo; append `!` to refresh local cache
+ " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+ "
+ " see :h vundle for more details or wiki for FAQ
+ " Put your non-Plugin stuff after this line
+ " after install. run following line for auto load vim configuration
+ " :so $MYVIMRC
+
 " Switch syntax highlighting on, when the terminal has colors
-call pathogen#infect()
 syntax on
 
 " Solarized stuff
-let g:solarized_termtrans = 1
+" let g:solarized_termtrans = 1
+" set background=dark
+" colorscheme solarized
+
+" Theme
 set background=light
-colorscheme solarized
+" colorscheme Tomorrow-Night
 
 " mouse configuration-HQT
 " send more character for redrawn
@@ -135,16 +196,13 @@ set colorcolumn=80
 " }}}
 
 " Plugins {{{
-execute pathogen#infect()
-filetype plugin indent on " required by Pathogen Plugin Manager
-
-" Theme
-set background=light
-colorscheme Tomorrow-Night
+" execute pathogen#infect()
+" filetype plugin indent on " required by Pathogen Plugin Manager
 
 " CtrlP
 map <leader>t <C-p>
 map <leader>y :CtrlPBuffer<cr>
+map <leader>c :CtrlPClearCache<cr>
 let g:ctrlp_show_hidden=1
 let g:ctrlp_working_path_mode=0
 let g:ctrlp_max_height=30
@@ -168,11 +226,26 @@ let g:ctrlp_custom_ignore = '\v[\/]((node_modules)|\.(git|svn|grunt|sass-cache))
 " Ack (uses Ag behind the scenes)
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
+" Syntastic. (config so more easily use at first time)
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+map :si :SyntasticInfo<cr>
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 " Airline (status line)
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_detect_paste=1
 set t_Co=256
+
+" MRU configuration
+map :mru :MRU<cr>
 
 " Gist authorisation settings
 let g:github_user = $GITHUB_USER
@@ -277,11 +350,15 @@ map <Leader>cl :w<cr>:exe "!cucumber %" . ":" . line(".")<cr>
 " Run all cucumber feature files
 map <Leader>ct :w<cr>:!cucumber<cr>
 
+" ChooseWin configuration
 " Tmux style window selection
 map <Leader>ws :ChooseWin<cr>
+map :cw :ChooseWin<cr>
+map :f :ChooseWin<cr>
 
 " Huynh Quang Thao Mapping :)
 let mapleader = ","
+
 nmap :ns :NERDTree<cr>
 
 " emacs keybinding
