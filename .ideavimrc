@@ -1,0 +1,4 @@
+"Custom Mapping {{{
+set number
+inoremap jk <esc>
+}}}
