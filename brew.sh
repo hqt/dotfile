@@ -128,6 +128,7 @@ gem install tmuxinator
 brew install vim --with-python --override-system-vi
 brew install macvim
 brew linkapps macvim
+git clone https://github.com/powerline/fonts.git ~/powerline && cd ~/powerline && ./install.sh && rm -r -f ~/powerline
 
 brew install neovim/neovim/neovim --with-python
 ln -s ~/.vim ~/.config/nvim
