@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
 # Install command-line tools using Homebrew.
+# xcode-select --install
+
+# install homebrew. uncomment this line on system that haven't installed brew yet
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # Make sure we’re using the latest Homebrew.
 echo "update brew"
