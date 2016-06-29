@@ -5,6 +5,7 @@
 
 # install homebrew. uncomment this line on system that haven't installed brew yet
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.bash_profile
 brew tap caskroom/versions
 brew tap caskroom/cask
 
@@ -22,7 +23,14 @@ echo "install coreutils"
 brew install coreutils
 ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
-# Install Java
+# install python
+echo "Install python ..."
+brew install python
+pip install --upgrade setuptools
+pip install --upgrade pip
+
+# install Java
+echo "Install Java ..."
 brew install Caskroom/cask/java
 
 echo "install another useful utilities ..."
@@ -119,14 +127,32 @@ brew install zopfli
 echo "install hqthao working utilities ..."
 
 # Node
-brew install node
+#brew install node
+# install NVM - Node version Manager
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.25.4/install.sh | bash
+nvm install stable        # install most stable node version
+nvm use stable
+nvm alias default stable  # set the installed stable version as the default
 npm install -g nodemon
 npm install -g express
+npm install -g coffee-script
+npm install -g grunt-cli
 
 # android
 brew install gradle
 brew install android-sdk
 brew install dex2jar
+
+# Zsh
+# install zsh shell
+brew install zsh
+brew install zsh-completions
+# install oh-my-zsh shell
+#git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# change default shell
+chsh -s /bin/zsh
+
 
 # tmux
 brew install tmux
@@ -137,6 +163,7 @@ gem install tmuxinator
 brew install vim --with-python --with-override-system-vi
 brew install macvim
 brew linkapps macvim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone https://github.com/powerline/fonts.git ~/powerline && cd ~/powerline && ./install.sh && rm -r -f ~/powerline
 git clone https://github.com/hqt/dotfile.git ~/dotfile && cd ~/dotfile && \
                   cp ~/dotfile/.vimrc ~/ \
@@ -154,6 +181,28 @@ brew install ag
 
 brew install mongodb
 brew install redis
+
+# Mac quicklook
+brew cask install qlcolorcode
+brew cask install qlstephen
+brew cask install qlmarkdown
+brew cask install quicklook-json
+brew cask install qlprettypatch
+brew cask install quicklook-csv
+brew cask install betterzipql
+brew cask install webpquicklook
+brew cask install suspicious-package
+
+# install GUI Application
+# brew cask install google-chrome
+# brew cask install flux
+# brew cask install vlc
+# brew cask install sublime-text
+# brew cask install atom
+# brew cask install dockertoolbox
+# brew cask install alfred
+# brew cask install the-unarchiver
+# brew cask install iterm2
 
 " copy all dotfile to home folder
 echo "Copy dotfile ..."
