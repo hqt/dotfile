@@ -5,6 +5,8 @@
 
 # install homebrew. uncomment this line on system that haven't installed brew yet
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew tap caskroom/versions
+brew tap caskroom/cask
 
 # Make sure we’re using the latest Homebrew.
 echo "update brew"
@@ -19,6 +21,9 @@ brew upgrade --all
 echo "install coreutils"
 brew install coreutils
 ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
+
+# Install Java
+brew install Caskroom/cask/java
 
 echo "install another useful utilities ..."
 
