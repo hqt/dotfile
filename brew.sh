@@ -30,6 +30,7 @@ brew install gnu-sed --with-default-names
 brew install bash
 brew tap homebrew/versions
 brew install bash-completion2
+brew install ctags
 
 # Switch to using brew-installed bash as default shell
 if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
@@ -91,14 +92,12 @@ brew install dark-mode
 #brew install exiv2
 brew install git
 brew install git-lfs
-brew install imagemagick --with-webp
 brew install lua
 brew install lynx
 brew install p7zip
 brew install pigz
 brew install pv
 brew install rename
-brew install rhino
 brew install speedtest_cli
 brew install ssh-copy-id
 brew install testssl
@@ -109,6 +108,11 @@ brew install zopfli
 
 # personal tools for work - hqthao
 echo "install hqthao working utilities ..."
+
+# Node
+brew install node
+npm install -g nodemon
+npm install -g express
 
 # android
 brew install gradle
@@ -121,11 +125,21 @@ brew install reattach-to-user-namespace --wrap-pbcopy-pbpaste && brew link reatt
 gem install tmuxinator
 
 # vim
-brew install vim --override-system-vi
+brew install vim --with-python --override-system-vi
 brew install macvim
+brew linkapps macvim
+
+brew install neovim/neovim/neovim --with-python
+ln -s ~/.vim ~/.config/nvim
+ln -s ~/.vimrc ~/.config/nvim/init.vim
+
+brew install ag
 
 brew install mongodb
 brew install redis
+
+" copy all dotfile to home folder
+echo "Copy dotfile ..."
 
 # Remove outdated versions from the cellar.
 #brew cleanup
