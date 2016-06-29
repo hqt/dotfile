@@ -86,7 +86,7 @@ brew install tcpflow
 brew install tcpreplay
 brew install tcptrace
 brew install ucspi-tcp # `tcpserver` etc.
-brew install xpdf
+brew install homebrew/x11/xpdf
 brew install xz
 
 # Install other useful binaries.
@@ -129,10 +129,17 @@ brew install reattach-to-user-namespace --wrap-pbcopy-pbpaste && brew link reatt
 gem install tmuxinator
 
 # vim
-brew install vim --with-python --override-system-vi
+brew install vim --with-python --with-override-system-vi
 brew install macvim
 brew linkapps macvim
 git clone https://github.com/powerline/fonts.git ~/powerline && cd ~/powerline && ./install.sh && rm -r -f ~/powerline
+git clone https://github.com/hqt/dotfile.git ~/dotfile && cd ~/dotfile && \
+                  cp ~/dotfile/.vimrc ~/ \
+                  cp ~/dotfile/.tmux.conf ~/ \
+                  cp ~/dotfile/.ideavimrc ~/ \
+                  cp ~/dotfile/.vifmrc ~/ \
+                  cp ~/dotfile/.zshrc ~/
+
 
 brew install neovim/neovim/neovim --with-python
 ln -s ~/.vim ~/.config/nvim
