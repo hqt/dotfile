@@ -21,10 +21,12 @@ Plugin 'ctrlpvim/ctrlp.vim'             " fuzzy finding. <Ctrl+O> for viewing op
 Plugin 'mileszs/ack.vim'                " ack plugin for vim. can be used for Ag as well
 Plugin 'mru.vim'                        " finding files in mru
 Plugin 'scrooloose/nerdTree'            " directory tree, press :ns
-Plugin 'vim-airline/vim-airline'        " vim theme. base on powerline
+Plugin 'Xuyuanp/nerdtree-git-plugin'    " view git status on nerdtree
+Plugin 'jistr/vim-nerdtree-tabs'        " using nerdtree and tab independent
+Plugin 'vim-airline/vim-airline'        " vim status and tabline theme. base on powerline
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'chriskempson/tomorrow-theme'    " another Vim theme compare to solarize
-"Plugin 'altercation/vim-colors-solarized' " solarize theme for vim
+Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'morhetz/gruvbox'                " Color scheme for vim
 Plugin 'skammer/vim-css-color'          " css color for css file
 Plugin 'tpope/vim-commentary'           " comment code utilities. gcc(line) gc(visual mode -> block) gc(normal mode -> motion)
@@ -32,6 +34,7 @@ Plugin 'tpope/vim-surround'             " change surrounding (paren, bracket, ta
 Plugin 'tpope/vim-endwise'              " wisely add end in Ruby
 Plugin 'godlygeek/tabular'              " format code tabular
 Plugin 'scrooloose/syntastic'           " syntax check programming languages (run :si or :SyntasticInfo)
+Plugin 'Valloric/YouCompleteMe'         " strong autocomplete for many languages
 Plugin 'ternjs/tern_for_vim'            " Javascript autocomplete base on Tern
 Plugin 'ervandew/supertab'              " Simple autocompletion base on typed words
 Plugin 'tpope/vim-fugitive'             " Git wrapper.
@@ -39,6 +42,12 @@ Plugin 'airblade/vim-gitgutter'         " Show git diff at sidebar. maybe confli
 Plugin 'gcmt/wildfire.vim'              " smart select closed text object (base on paren)
 Plugin 't9md/vim-choosewin'             " choose window in vim like vimium :D can use :cw or :f (simulate Vimimum)
 Plugin 'MattesGroeger/vim-bookmarks'    " global bookmark in VIM (ma and mm hotkey)
+Plugin 'easymotion/vim-easymotion'      " easier for motion
+Plugin 'justinmk/vim-sneak'             " easier for going by pressing s
+Plugin 'christoomey/vim-tmux-navigator' " seamless switch panel between tmux and and vim
+Plugin 'terryma/vim-multiple-cursors'   " multi cusor like Sublime (remember hotkey Control + N)
+Plugin 'majutsushi/tagbar'              " browse the tags of the current files and overview of its structure
+Plugin 'AutoTag'                        " after saving file, auto delete old data and re-create new one
 
 " All of your Plugins must be added before the following line
  call vundle#end()            " required
@@ -59,23 +68,28 @@ Plugin 'MattesGroeger/vim-bookmarks'    " global bookmark in VIM (ma and mm hotk
 
 " Switch syntax highlighting on, when the terminal has colors
 syntax on
+" can be anywhere in sourcetree instead of only root. it will find current directory and toward root until find one
+set tags=./tags;/
+let mapleader = ";"
 
-" Solarized stuff
+" clear background color so vim doesn't only color background under text.
+:set t_ut=
+
+" Solarized theme
 " let g:solarized_termtrans = 1
 " set background=dark
 " colorscheme solarized
 
-" Theme
+" Tomorrow Theme
 set background=light
-" colorscheme Tomorrow-Night
+colorscheme Tomorrow-Night
 
-" mouse configuration-HQT
-" send more character for redrawn
-set ttyfast
 " enable mouse in all mode
 set mouse=a
 " set this to the name or terminal supporting mouse codes (xterm, xterm2 ...
-set ttymouse=xterm2
+if !has('nvim')
+    set ttymouse=xterm2
+endif
 
 set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline
 
@@ -186,7 +200,7 @@ set lazyredraw
 " highlight a matching [{()}] when cursor is placed on start/end character
 set showmatch
 
-" Set built-in file system explorer to use layout similar to the NERDTree plugin
+" Set built-in file system explorer to use layout similar to the ERDTree plugin
 let g:netrw_liststyle=3
 
 " Always highlight column 80 so it's easier to see where
@@ -230,19 +244,25 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 map :si :SyntasticInfo<cr>
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = { 'mode': 'passive' }
+
+" Sneak
+let g:sneak#streak = 1
 
 " Airline (status line)
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_detect_paste=1
 set t_Co=256
+
+" Tabbar
+nmap <leader>tb :TagbarToggle<CR>
 
 " MRU configuration
 map :mru :MRU<cr>
@@ -267,8 +287,29 @@ let g:gitgutter_eager = 0
 let g:gitgutter_sign_column_always = 1
 highlight clear SignColumn
 
+" NERDTree
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
+let g:nerdtree_tabs_open_on_gui_startup = 0
+
+nmap :ns :NERDTree<cr>
+nmap :tns <plug>NERDTreeTabsToggle<cr>
 " Searching the file system
 map <leader>' :NERDTreeToggle<cr>
+map <leader>ns :NERDTree<cr>
+map <leader>tns <plug>NERDTreeTabsToggle<cr>
+
+" Macvim
+set guioptions+=c
 
 " Tabularize
 map <Leader>e :Tabularize /=<cr>
@@ -277,13 +318,13 @@ map <Leader>es :Tabularize /=\zs<cr>
 map <Leader>cs :Tabularize /:\zs<cr>
 
 " Camel Case Motion (for dealing with programming code)
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
-sunmap w
-sunmap b
-sunmap e
-" }}}
+" map <silent> w <Plug>CamelCaseMotion_w
+" map <silent> b <Plug>CamelCaseMotion_b
+" map <silent> e <Plug>CamelCaseMotion_e
+" sunmap w
+" sunmap b
+" sunmap e
+" " }}}
 
 " Mappings {{{
 " Notes...
@@ -308,9 +349,6 @@ cmap w!! %!sudo tee > /dev/null %
 " File System Explorer (in horizontal split)
 map <leader>. :Sexplore<cr>
 
-" Buffers
-map <leader>yt :ls<cr>
-
 " Buffers (runs the delete buffer command on all open buffers)
 map <leader>yd :bufdo bd<cr>
 
@@ -324,9 +362,21 @@ map <leader>w[ <C-W>= " equalize all windows
 " Attempting to map <C-W> < and > didn't work
 " Same with mapping <C-W>|
 
+" Leader key configuration
+" make all mapping easier and less painful : )
+
+" back tag easier
+map <C-[> <C-T>
+
 " Make splitting Vim windows easier
-map <leader>; <C-W>s
-map <leader>` <C-W>v
+map <leader>- <C-W>s
+map <leader>\ <C-W>v
+" quitting pane easier
+map <Leader>q :q<cr>
+" writing easier
+map <Leader>w :w<cr>
+" clear search easier
+map <Leader>cs :noh<cr>
 
 " Running Tests...
 " See also <https://gist.github.com/8114940>
@@ -352,27 +402,18 @@ map <Leader>ct :w<cr>:!cucumber<cr>
 
 " ChooseWin configuration
 " Tmux style window selection
-map <Leader>ws :ChooseWin<cr>
 map :cw :ChooseWin<cr>
 map :f :ChooseWin<cr>
-
-" Huynh Quang Thao Mapping :)
-let mapleader = ","
-
-nmap :ns :NERDTree<cr>
-
-" emacs keybinding
-imap <c-p> <up>
-imap <c-n> <down>
-imap <c-f> <right>
-imap <c-b> <left>
-map <c-d> dd
+map <Leader>f :ChooseWin<cr>
 
 " convention for switching between normal and insert mode
 inoremap jk <esc>
 inoremap kj <esc>
 
 " Change cursor shape between insert and normal mode in iTerm2.app
+" nvim cursor setting
+:let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+" tmux setting
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
     let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
