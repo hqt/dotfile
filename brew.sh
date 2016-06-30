@@ -150,9 +150,6 @@ brew install zsh-completions
 # install oh-my-zsh shell
 #git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-# change default shell
-chsh -s /bin/zsh
-
 
 # tmux
 brew install tmux
@@ -160,24 +157,26 @@ brew install reattach-to-user-namespace --wrap-pbcopy-pbpaste && brew link reatt
 gem install tmuxinator
 
 # vim
+brew install ag
 brew install vim --with-python --with-override-system-vi
 brew install macvim
 brew linkapps macvim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-git clone https://github.com/powerline/fonts.git ~/powerline && cd ~/powerline && ./install.sh && rm -r -f ~/powerline
+git clone https://github.com/powerline/fonts.git ~/powerline &&  \
+                  cd ~/powerline && \
+                  ./install.sh && \
+                  rm -r -f ~/powerline
 git clone https://github.com/hqt/dotfile.git ~/dotfile && cd ~/dotfile && \
-                  cp ~/dotfile/.vimrc ~/ \
-                  cp ~/dotfile/.tmux.conf ~/ \
-                  cp ~/dotfile/.ideavimrc ~/ \
-                  cp ~/dotfile/.vifmrc ~/ \
-                  cp ~/dotfile/.zshrc ~/
-
+                  cp ~/dotfile/.vimrc ~/ && \
+                  cp ~/dotfile/.tmux.conf ~/ && \
+                  cp ~/dotfile/.ideavimrc ~/ && \
+                  cp ~/dotfile/.vifmrc ~/ && \
+                  cp ~/dotfile/.zshrc ~/ && \
+                  rm -r -f ~/dotfile
 
 brew install neovim/neovim/neovim --with-python
 ln -s ~/.vim ~/.config/nvim
 ln -s ~/.vimrc ~/.config/nvim/init.vim
-
-brew install ag
 
 brew install mongodb
 brew install redis
@@ -194,18 +193,36 @@ brew cask install webpquicklook
 brew cask install suspicious-package
 
 # install GUI Application
+# brew cask install iterm2
 # brew cask install google-chrome
+# brew cask install karabiner
+# brew cask install seil
 # brew cask install flux
-# brew cask install vlc
+# brew cask install slack
+# brew cask install memoryanalyzer
+# brew cask install sourcetree
+# brew cask install android-file-transfer
 # brew cask install sublime-text
 # brew cask install atom
-# brew cask install dockertoolbox
-# brew cask install alfred
 # brew cask install the-unarchiver
-# brew cask install iterm2
+# brew cask install vlc
+# brew cask install dockertoolbox
+# brew cask install teamviewer
+# brew cask install utorrent
+# brew cask install paintbrush
+# brew cask install firefox
+# brew cask install skype
 
-" copy all dotfile to home folder
-echo "Copy dotfile ..."
+# brew cask install alfred
+
+# cleanup all installation cache
+brew cask cleanup
+
+# change default shell
+chsh -s /bin/zsh
 
 # Remove outdated versions from the cellar.
 #brew cleanup
+
+# install vim plugin
+# vim +PluginInstall
