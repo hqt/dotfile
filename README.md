@@ -1,7 +1,7 @@
-# <imgs/dotfile.png" width="100"/>
+# <img src="imgs/dotfile.png" width="100"/>
 My Dotfile collections and sh script for installation on new machine. This is suitable for whom programming in anroid, ruby, python and especially for vim user.
 
-# <imgs/screenshot.png" width="840"/>
+# <img src="imgs/screenshot.png" width="840"/>
 
 # Installation Steps
 1. run `brew.sh`.
@@ -13,7 +13,7 @@ My Dotfile collections and sh script for installation on new machine. This is su
 - <a href="">Homebrew cask</a>: Homebrew for GUI, supporting install all GUI apps such as Chrome, Skype, Sourcetree ... automatically.
 - <a href="">NVM</a>: Node Version Manager. Control multi versions of node in same system. 
 - <a href="">NPM</a>: Node Plugin Manager. Control all node plugin globally. 
--  <a href="">RVM</a>:Ruby Version Manager. Control multi versions of ruby in same system. 
+- <a href="">RVM</a>:Ruby Version Manager. Control multi versions of ruby in same system. 
 
 # Vim Configuration:
 This system configs for using ITerm + Tmux + Tmuxinator + Vim smoothly.
