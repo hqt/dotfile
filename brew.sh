@@ -3,6 +3,8 @@
 # Install command-line tools using Homebrew.
 # xcode-select --install
 
+ sudo chown -R $(whoami) /usr/local
+
 # install homebrew. uncomment this line on system that haven't installed brew yet
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.bash_profile
@@ -22,6 +24,9 @@ brew upgrade --all
 echo "install coreutils"
 brew install coreutils
 ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
+
+# Install ruby
+curl -L https://get.rvm.io | bash -s stable --autolibs=enabled --ruby --rails
 
 # install python
 echo "Install python ..."
@@ -99,7 +104,6 @@ brew install tcpflow
 brew install tcpreplay
 brew install tcptrace
 brew install ucspi-tcp # `tcpserver` etc.
-brew install homebrew/x11/xpdf
 brew install xz
 
 # Install other useful binaries.
