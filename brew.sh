@@ -26,7 +26,7 @@ brew install coreutils
 ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
 # Install ruby
-curl -L https://get.rvm.io | bash -s stable --autolibs=enabled --ruby --rails
+# curl -L https://get.rvm.io | bash -s stable --autolibs=enabled --ruby --rails
 
 # install python
 echo "Install python ..."
@@ -170,7 +170,7 @@ git clone https://github.com/powerline/fonts.git ~/powerline &&  \
                   cd ~/powerline && \
                   ./install.sh && \
                   rm -r -f ~/powerline
-git clone https://github.com/hqt/dotfile.git ~/dotfile && cd ~/dotfile && \
+git clone https://github.com/hqt/dotfile.git ~/dotfile && \
                   cp ~/dotfile/.vimrc ~/ && \
                   cp ~/dotfile/.tmux.conf ~/ && \
                   cp ~/dotfile/.ideavimrc ~/ && \
