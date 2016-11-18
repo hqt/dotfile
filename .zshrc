@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/Users/huynhthao/.oh-my-zsh
+  export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -68,6 +68,7 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
+export EDITOR='nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -83,6 +84,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias nv="nvim"
 
 # change workflow of switch back and forth from vim to command line
 # before: Vim -> Control + Z -> Command line -> fg enter    -> Vim
@@ -98,3 +100,28 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
+
+bindkey -v
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# customize: only show username (instead of username@computername so long)
+prompt_context() {
+  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+      prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+  fi
+}
+eval "$(rbenv init -)"
+eval "$(scmpuff init -s)"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export THEOS="/opt/theos"
+export THEOS_DEVICE_IP='192.168.1.10'
+export GO15VENDOREXPERIMENT=1
+export GOPATH=$HOME/Documents/go
+export PATH="$GOPATH/bin:/opt/theos/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

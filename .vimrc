@@ -1,70 +1,100 @@
+  " Pathogen configuration {{{
+  " Pathogen configuration
+  " call pathogen#infect()
+
+  " Vundle configuration
+  " set nocompatible              " be iMproved, required
+  filetype off                  " required
+
+  " set the runtime path to include Vundle and initialize
+  set rtp+=~/.vim/bundle/Vundle.vim
+  call vundle#begin()
+  " " alternatively, pass a path where Vundle should install plugins
+  " "call vundle#begin('~/some/path/here')
+  "
+  " " let Vundle manage Vundle, required
+  Plugin 'VundleVim/Vundle.vim'
+
+  " Add plugins from here
+  " Theme
+  Plugin 'vim-airline/vim-airline'        " vim status and tabline theme. base on powerline
+  Plugin 'vim-airline/vim-airline-themes'
+  Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+  Plugin 'altercation/vim-colors-solarized'
+  Plugin 'morhetz/gruvbox'                " Color scheme for vim
+  " Nerdtree
+  Plugin 'scrooloose/nerdTree'            " directory tree, press :ns
+  Plugin 'Xuyuanp/nerdtree-git-plugin'    " view git status on nerdtree
+  Plugin 'jistr/vim-nerdtree-tabs'        " using nerdtree and tab independent
+  " Utility
+  Plugin 'tpope/vim-fugitive'             " Git wrapper.
+  Plugin 'airblade/vim-gitgutter'         " Show git diff at sidebar. maybe conflict with bookmark
+  Plugin 't9md/vim-choosewin'             " choose window in vim like vimium :D can use :cw or :f (simulate Vimimum)
+  Plugin 'MattesGroeger/vim-bookmarks'    " global bookmark in VIM (ma and mm hotkey)
+  Plugin 'tpope/vim-dispatch'             " run asynchronous command
+  Plugin 'junegunn/fzf.vim'               " Searching in vim using fzf
+  " Auto complete
+  "Plugin 'majutsushi/tagbar'              " browse the tags of the current files and overview of its structure
+  "Plugin 'AutoTag'                        " after saving file, auto delete old data and re-create new one
+  " Plugin 'scrooloose/syntastic'           " syntax check programming languages (run :si or :SyntasticInfo)
+  " Plugin 'Valloric/YouCompleteMe'         " strong autocomplete for many languages
+  " Syntax hightlight
+  Plugin 'ekalinin/Dockerfile.vim'        " syntax hightlight for docker
+  Plugin 'skammer/vim-css-color'          " css color for css file
+  Plugin 'vim-scripts/JSON.vim'           " syntax for json
+  " Others
+  Plugin 'ctrlpvim/ctrlp.vim'             " fuzzy finding. <Ctrl+O> for viewing option
+  Plugin 'mileszs/ack.vim'                " ack plugin for vim. can be used for Ag as well
+  Plugin 'mru.vim'                        " finding files in mru
+  Plugin 'tpope/vim-repeat'               " enhance repeating function in vim
+  Plugin 'svermeulen/vim-easyclip'        " easier for vim register management such as yank/cut/delete. or management register 1->9 more robust
+  Plugin 'tpope/vim-surround'             " change surrounding (paren, bracket, tag ...) in pair (cs and ds)
+  Plugin 'ervandew/supertab'              " Simple autocompletion base on typed words
+  Plugin 'gcmt/wildfire.vim'              " smart select closed text object (base on paren)
+  Plugin 'easymotion/vim-easymotion'      " easier for motion
+  Plugin 'christoomey/vim-tmux-navigator' " seamless switch panel between tmux and and vim
+  Plugin 'terryma/vim-multiple-cursors'   " multi cusor like Sublime (remember hotkey Control + N)
+  " Code format generic
+  Plugin 'junegunn/vim-easy-align'        " allign code
+  Plugin 'tpope/vim-commentary'           " comment code utilities. gcc(line) gc(visual mode -> block) gc(normal mode -> motion)
+  Plugin 'godlygeek/tabular'              " format code tabular
+  " Ruby plugin
+  Plugin 'kana/vim-textobj-user'          " generic text object selection
+  Plugin 'nelstrom/vim-textobj-rubyblock' " select text object in vim such as inside loop, if, method
+  Plugin 'tpope/vim-endwise'              " wisely add end in Ruby
+  Plugin 'tpope/vim-haml'                 " syntax hightlight for haml
+  Plugin 'slim-template/vim-slim'         " syntax highlight for slim
+  "Plugin 'tpope/vim-bundler'
+  "Plugin 'tpope/vim-rake'
+  "Plugin 'tpope/vim-rails'
+  "Plugin 'vim-ruby/vim-ruby'
+  "Plugin 'ecomba/vim-ruby-refactoring'    " refactoring for ruby
+  " Go
+  Plugin 'fatih/vim-go'                   " Plugin for go language
+  " JavaScript
+  Plugin 'pangloss/vim-javascript'        " javascript syntax hightlight
+  Plugin 'mxw/vim-jsx' 										" react jsx syntax hightlight
+
+  " All of your Plugins must be added before the following line
+   call vundle#end()            " required
+   filetype plugin indent on    " required
+   " To ignore plugin indent changes, instead use:
+   "filetype plugin on
+   "
+   " Brief help
+   " :PluginList       - lists configured plugins
+   " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+   " :PluginSearch foo - searches for foo; append `!` to refresh local cache
+   " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+   "
+   " see :h vundle for more details or wiki for FAQ
+   " Put your non-Plugin stuff after this line
+   " after install. run following line for auto load vim configuration
+   " :so $MYVIMRC
+
+   " }}}
+
 " Settings {{{
-" Pathogen configuration
-" call pathogen#infect()
-
-" Vundle configuration
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" " alternatively, pass a path where Vundle should install plugins
-" "call vundle#begin('~/some/path/here')
-"
-" " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" Add plugins from here
-
-Plugin 'ctrlpvim/ctrlp.vim'             " fuzzy finding. <Ctrl+O> for viewing option
-Plugin 'mileszs/ack.vim'                " ack plugin for vim. can be used for Ag as well
-Plugin 'mru.vim'                        " finding files in mru
-Plugin 'scrooloose/nerdTree'            " directory tree, press :ns
-Plugin 'Xuyuanp/nerdtree-git-plugin'    " view git status on nerdtree
-Plugin 'jistr/vim-nerdtree-tabs'        " using nerdtree and tab independent
-Plugin 'vim-airline/vim-airline'        " vim status and tabline theme. base on powerline
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'morhetz/gruvbox'                " Color scheme for vim
-Plugin 'skammer/vim-css-color'          " css color for css file
-Plugin 'tpope/vim-commentary'           " comment code utilities. gcc(line) gc(visual mode -> block) gc(normal mode -> motion)
-Plugin 'tpope/vim-surround'             " change surrounding (paren, bracket, tag ...) in pair (cs and ds)
-Plugin 'tpope/vim-endwise'              " wisely add end in Ruby
-Plugin 'godlygeek/tabular'              " format code tabular
-Plugin 'scrooloose/syntastic'           " syntax check programming languages (run :si or :SyntasticInfo)
-Plugin 'Valloric/YouCompleteMe'         " strong autocomplete for many languages
-Plugin 'ternjs/tern_for_vim'            " Javascript autocomplete base on Tern
-Plugin 'ervandew/supertab'              " Simple autocompletion base on typed words
-Plugin 'tpope/vim-fugitive'             " Git wrapper.
-Plugin 'airblade/vim-gitgutter'         " Show git diff at sidebar. maybe conflict with bookmark
-Plugin 'gcmt/wildfire.vim'              " smart select closed text object (base on paren)
-Plugin 't9md/vim-choosewin'             " choose window in vim like vimium :D can use :cw or :f (simulate Vimimum)
-Plugin 'MattesGroeger/vim-bookmarks'    " global bookmark in VIM (ma and mm hotkey)
-Plugin 'easymotion/vim-easymotion'      " easier for motion
-Plugin 'justinmk/vim-sneak'             " easier for going by pressing s
-Plugin 'christoomey/vim-tmux-navigator' " seamless switch panel between tmux and and vim
-Plugin 'terryma/vim-multiple-cursors'   " multi cusor like Sublime (remember hotkey Control + N)
-Plugin 'majutsushi/tagbar'              " browse the tags of the current files and overview of its structure
-Plugin 'AutoTag'                        " after saving file, auto delete old data and re-create new one
-
-" All of your Plugins must be added before the following line
- call vundle#end()            " required
- filetype plugin indent on    " required
- " To ignore plugin indent changes, instead use:
- "filetype plugin on
- "
- " Brief help
- " :PluginList       - lists configured plugins
- " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
- " :PluginSearch foo - searches for foo; append `!` to refresh local cache
- " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
- "
- " see :h vundle for more details or wiki for FAQ
- " Put your non-Plugin stuff after this line
- " after install. run following line for auto load vim configuration
- " :so $MYVIMRC
 
 " Switch syntax highlighting on, when the terminal has colors
 syntax on
@@ -97,7 +127,7 @@ set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline
 set nohlsearch
 
 " Use vim, not vi api
-set nocompatible
+"set nocompatible
 
 " No backup files
 set nobackup
@@ -186,6 +216,7 @@ set splitbelow
 set splitright
 
 " Highlight the current line
+map - <c-w>-
 set cursorline
 
 " Ensure Vim doesn't beep at you every time you make a mistype
@@ -200,29 +231,46 @@ set lazyredraw
 " highlight a matching [{()}] when cursor is placed on start/end character
 set showmatch
 
+" Code folding
+set foldmethod=indent
+set foldlevel=1
+set foldclose=all
+
 " Set built-in file system explorer to use layout similar to the ERDTree plugin
+map - <c-w>-
 let g:netrw_liststyle=3
 
-" Always highlight column 80 so it's easier to see where
-" cutoff appears on longer screens
-autocmd BufWinEnter * highlight ColorColumn ctermbg=darkred
-set colorcolumn=80
 " }}}
 
 " Plugins {{{
 " execute pathogen#infect()
 " filetype plugin indent on " required by Pathogen Plugin Manager
 
+runtime macros/matchit.vim
+
+" Javascript
+
+" vim-javascript
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+let g:javascript_plugin_flow  = 1
+set foldmethod=syntax
+
+" vim-jsx
+let g:jsx_ext_required = 0  "enable jsx syntax in js file
+
 " CtrlP
 map <leader>t <C-p>
 map <leader>y :CtrlPBuffer<cr>
-map <leader>c :CtrlPClearCache<cr>
-let g:ctrlp_show_hidden=1
-let g:ctrlp_working_path_mode=0
-let g:ctrlp_max_height=30
+map :cpr :CtrlPClearCache<cr>
+let g:ctrlp_show_hidden       = 1
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_max_height        = 30
 
 " let no max file limit
-let g:ctrlp_max_files = 0
+let g:ctrlp_max_files       = 0
+let g:ctrlp_max_depth       = 40
+let g:ctrlp_follow_symlinks = 1
 
 " CtrlP -> override <C-o> to provide options for how to open files
 let g:ctrlp_arg_map = 1
@@ -247,18 +295,29 @@ set statusline+=%*
 map :si :SyntasticInfo<cr>
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_mode_map = { 'mode': 'passive' }
+let g:syntastic_auto_loc_list            = 1
+let g:syntastic_check_on_open            = 0
+let g:syntastic_check_on_wq              = 0
+let g:syntastic_mode_map                 = { 'mode': 'passive' }
+
+" Go
+let g:go_highlight_functions         = 1
+let g:go_highlight_methods           = 1
+let g:go_highlight_fields            = 1
+let g:go_highlight_types             = 1
+let g:go_highlight_operators         = 1
+let g:go_highlight_build_constraints = 1
+
+" fzf
+set rtp+=~/.fzf
 
 " Sneak
 let g:sneak#streak = 1
 
 " Airline (status line)
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts            = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_detect_paste=1
+let g:airline_detect_paste               = 1
 set t_Co=256
 
 " Tabbar
@@ -268,9 +327,9 @@ nmap <leader>tb :TagbarToggle<CR>
 map :mru :MRU<cr>
 
 " Gist authorisation settings
-let g:github_user = $GITHUB_USER
-let g:github_token = $GITHUB_TOKEN
-let g:gist_detect_filetype = 1
+let g:github_user                  = $GITHUB_USER
+let g:github_token                 = $GITHUB_TOKEN
+let g:gist_detect_filetype         = 1
 let g:gist_open_browser_after_post = 1
 
 " Related plugins:
@@ -281,9 +340,25 @@ let g:gist_open_browser_after_post = 1
 " HTML generation using 'emmet-vim'
 " NORMAL mode Ctrl+y then , <C-y,>
 
+" Vim easy-align plugin
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+vmap ga <Plug>(EasyAlign)
+
+" vmap <Enter> <Plug>(EasyAlign)
+" nmap =a <Plug>(EasyAlign)
+
+"Easy-clip
+" easy-clip mapping all delete commands such as d/c/ ... to black-hole
+" register and mapping m for cut character
+" meanwhile. m is marked in vim. so we must remap again mark function
+nnoremap gm m
+
 " Git gutter
-let g:gitgutter_enabled = 1
-let g:gitgutter_eager = 0
+let g:gitgutter_enabled            = 1
+let g:gitgutter_eager              = 0
 let g:gitgutter_sign_column_always = 1
 highlight clear SignColumn
 
@@ -301,13 +376,18 @@ let g:NERDTreeIndicatorMapCustom = {
     \ }
 let g:nerdtree_tabs_open_on_gui_startup = 0
 
+" nerdtree internal hotkey
+let NERDTreeMapOpenSplit  = '-'
+let NERDTreeMapOpenVSplit = '+'
+
 nmap :ns :NERDTree<cr>
 nmap :tns <plug>NERDTreeTabsToggle<cr>
 " Searching the file system
 map <leader>' :NERDTreeToggle<cr>
 map <leader>ns :NERDTree<cr>
 map <leader>tns <plug>NERDTreeTabsToggle<cr>
-
+" hotkey to navigate current file
+ map <leader>r :NERDTreeFind<cr>
 " Macvim
 set guioptions+=c
 
@@ -327,12 +407,12 @@ map <Leader>cs :Tabularize /:\zs<cr>
 " " }}}
 
 " Mappings {{{
-" Notes...
+
+" Notes. How to use map, noremap ...
 "
 " :map     j gg (j will be mapped to gg)
 " :map     Q j  (Q will also be mapped to gg, because j will be expanded -> recursive mapping)
 " :noremap W j  (W will be mapped to j not to gg, because j will not be expanded -> non recursive)
-"
 " These mappings work in all modes. To have mappings work in only specific
 " modes then denote the mapping with the mode character.
 "
@@ -343,30 +423,65 @@ map <Leader>cs :Tabularize /:\zs<cr>
 " Clear search buffer
 :nnoremap § :nohlsearch<cr>
 
-" Command to use sudo when needed
-cmap w!! %!sudo tee > /dev/null %
-
-" File System Explorer (in horizontal split)
-map <leader>. :Sexplore<cr>
-
 " Buffers (runs the delete buffer command on all open buffers)
 map <leader>yd :bufdo bd<cr>
 
-" Make handling vertical/linear Vim windows easier
-map <leader>w- <C-W>- " decrement height
-map <leader>w+ <C-W>+ " increment height
+" fugitive git bindings
+nnoremap <space>ga :Git add %:p<CR><CR>
+nnoremap <space>gs :Gstatus<CR>
+nnoremap <space>gc :Gcommit -v -q<CR>
+nnoremap <space>gt :Gcommit -v -q %:p<CR>
+nnoremap <space>gd :Gdiff<CR>
+nnoremap <space>ge :Gedit<CR>
+nnoremap <space>gr :Gread<CR>
+nnoremap <space>gw :Gwrite<CR><CR>
+nnoremap <space>gl :silent! Glog<CR>:bot copen<CR>
+nnoremap <space>gg :Ggrep<Space>
+nnoremap <space>gm :Gmove<Space>
+nnoremap <space>gb :Git branch<Space>
+nnoremap <space>go :Git checkout<Space>
+nnoremap <space>gps :Dispatch! git push<CR>
+nnoremap <space>gpl :Dispatch! git pull<CR>
+
+" Vim window size management
+
+" resize vim panel
+map _ <c-w>- " decrement height
+map + <c-w>+ " increment height
+" map < <c-w>< " decrement width
+" map > <c-w>> " decrement height
 map <leader>w] <C-W>_ " maximize height
 map <leader>w[ <C-W>= " equalize all windows
 
-" Handling horizontal Vim windows doesn't appear to be possible.
-" Attempting to map <C-W> < and > didn't work
-" Same with mapping <C-W>|
+" move between buffers
+" map <C-[> :bp<CR>
+" map <C-]> :bn<CR>
 
 " Leader key configuration
 " make all mapping easier and less painful : )
 
-" back tag easier
-map <C-[> <C-T>
+"" Running Tests...
+" See also <https://gist.github.com/8114940>
+
+" Run currently open RSpec test file
+map <Leader>rf :w<cr>:!rspec % --format nested<cr>
+
+" Run current RSpec test
+" RSpec is clever enough to work out the test to run if the cursor is on any line within the test
+map <Leader>rl :w<cr>:exe "!rspec %" . ":" . line(".")<cr>
+
+" Run all RSpec tests
+map <Leader>rt :w<cr>:!rspec --format nested<cr> CtrlH on nvim acts as backspace. we must give a little hack here
+
+" bug in nvim. Control+H -> backspace. so we order backspace again to tmux
+" navigator
+if has('nvim')
+  nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
+endif
+
+" switching between buffer easier by pressing tab or shift-tab
+nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
+nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
 
 " Make splitting Vim windows easier
 map <leader>- <C-W>s
@@ -378,52 +493,38 @@ map <Leader>w :w<cr>
 " clear search easier
 map <Leader>cs :noh<cr>
 
-" Running Tests...
-" See also <https://gist.github.com/8114940>
-
-" Run currently open RSpec test file
-map <Leader>rf :w<cr>:!rspec % --format nested<cr>
-
-" Run current RSpec test
-" RSpec is clever enough to work out the test to run if the cursor is on any line within the test
-map <Leader>rl :w<cr>:exe "!rspec %" . ":" . line(".")<cr>
-
-" Run all RSpec tests
-map <Leader>rt :w<cr>:!rspec --format nested<cr>
-
-" Run currently open cucumber feature file
-map <Leader>cf :w<cr>:!cucumber %<cr>
-
-" Run current cucumber scenario
-map <Leader>cl :w<cr>:exe "!cucumber %" . ":" . line(".")<cr>
-
-" Run all cucumber feature files
-map <Leader>ct :w<cr>:!cucumber<cr>
-
 " ChooseWin configuration
 " Tmux style window selection
 map :cw :ChooseWin<cr>
 map :f :ChooseWin<cr>
 map <Leader>f :ChooseWin<cr>
 
-" convention for switching between normal and insert mode
-inoremap jk <esc>
-inoremap kj <esc>
-
 " Change cursor shape between insert and normal mode in iTerm2.app
 " nvim cursor setting
 :let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 " tmux setting
 if exists('$TMUX')
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 else
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 " }}}
 
 " Commands {{{
+" http://vim.wikia.com/wiki/Have_Vim_check_automatically_if_the_file_has_changed_externally
+" Save whenever switching windows or leaving vim. This is useful when running
+" the tests inside vim without having to save all files first.
+au FocusLost,WinLeave * :silent! wa
+
+" Trigger autoread when changing buffers or coming back to vim.
+au FocusGained,BufEnter * :silent! !
+
+" When switching panes in tmux, an escape sequence is printed. Redrawing gets
+" rid of it. See https://gist.github.com/mislav/5189704#comment-951447
+au FocusLost * :redraw!
+
 " jump to last cursor
 autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -444,9 +545,15 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 autocmd Filetype markdown setlocal wrap linebreak nolist textwidth=0 wrapmargin=0 " http://vim.wikia.com/wiki/Word_wrap_without_line_breaks
 autocmd FileType sh,cucumber,ruby,yaml,zsh,vim setlocal shiftwidth=2 tabstop=2 expandtab
 
-" specify syntax highlighting for specific files
+" specify syntax highlighting for specific files: json. readme. spv
 autocmd Bufread,BufNewFile *.spv set filetype=php
 autocmd Bufread,BufNewFile *.md set filetype=markdown " Vim interprets .md as 'modula2' otherwise, see :set filetype?
+autocmd Bufread,BufNewFile *.json set ft=javascript
+
+" Always highlight column 80 so it's easier to see where
+" cutoff appears on longer screens
+autocmd BufWinEnter * highlight ColorColumn ctermbg=darkred
+set colorcolumn=80
 
 " Highlight words to avoid in tech writing
 " http://css-tricks.com/words-avoid-educational-writing/
@@ -458,6 +565,8 @@ autocmd InsertLeave * match TechWordsToAvoid /\cobviously\|basically\|simply\|of
 autocmd BufWinLeave * call clearmatches()
 
 " Create a 'scratch buffer' which is a temporary buffer Vim wont ask to save
+" running command :Shell will print out all output to separate buffer.
+" (instead of ->  :! command  )
 " http://vim.wikia.com/wiki/Display_output_of_shell_commands_in_new_window
 command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
 function! s:RunShellCommand(cmdline)

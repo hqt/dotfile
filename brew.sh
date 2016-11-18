@@ -26,13 +26,37 @@ brew install coreutils
 ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
 # Install ruby
+# must uninstall rvm first (if exist)
+# rvm implode
+# rm -r /etc/rvmrc ~/.rvmrc
+brew install rbenv ruby-build
+# see all available ruby versions
+# rbenv install -list
+# install ruby versions
+# rbenv install <ruby_version>
+# select ruby for local version, only for current user
+# rbenv local <ruby_version>
+# select ruby for global version, for all users
+# rbenv global <ruby_version>
+# list all available ruby version has installed rbenv can use
+# rbenv versions
+# add those to shell configuration file
+# echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
+# echo 'eval "$(rbenv init -)"' >> ~/.bash_profile #to enable shims and auto-complete
+gem install bundler
+
+# rvm
 # curl -L https://get.rvm.io | bash -s stable --autolibs=enabled --ruby --rails
 
 # install python
-echo "Install python ..."
+echo "Install python. pip also included ..."
 brew install python
 pip install --upgrade setuptools
 pip install --upgrade pip
+pip intall Django
+pip install scrapy
+pip install celery
+brew install rabbitmq
 
 # install Java
 echo "Install Java ..."
@@ -53,17 +77,19 @@ brew install bash
 brew tap homebrew/versions
 brew install bash-completion2
 brew install ctags
+gem install gem-ctags  # automatically index ctags for all gems
+gem ctags
 
-# Switch to using brew-installed bash as default shell
+# switch to using brew-installed bash as default shell
 if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
   echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;
   chsh -s /usr/local/bin/bash;
 fi;
 
-# Install `wget` with IRI support.
+# install `wget` with iri support.
 brew install wget --with-iri
 
-# Install RingoJS and Narwhal.
+# install ringojs and narwhal.
 # Note that the order in which these are installed is important;
 # see http://git.io/brew-narwhal-ringo.
 brew install ringojs
@@ -146,6 +172,8 @@ npm install -g grunt-cli
 brew install gradle
 brew install android-sdk
 brew install dex2jar
+brew install apktool
+brew cask install jd-gui
 
 # Zsh
 # install zsh shell
@@ -154,6 +182,10 @@ brew install zsh-completions
 # install oh-my-zsh shell
 #git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# install battery command plugin. (battery -t) so we can apply on tmux nicely
+brew tap Goles/battery
+brew install battery
 
 # tmux
 brew install tmux
@@ -182,8 +214,12 @@ brew install neovim/neovim/neovim --with-python
 ln -s ~/.vim ~/.config/nvim
 ln -s ~/.vimrc ~/.config/nvim/init.vim
 
+# Database
 brew install mongodb
 brew install redis
+brew install nginx
+brew install postgresql
+brew install postgis
 
 # Mac quicklook
 brew cask install qlcolorcode
@@ -200,9 +236,9 @@ brew cask install suspicious-package
 # brew cask install iterm2
 # brew cask install google-chrome
 # brew cask install karabiner
-# brew cask install seil
 # brew cask install flux
 # brew cask install slack
+# brew cask install postman
 # brew cask install memoryanalyzer
 # brew cask install sourcetree
 # brew cask install android-file-transfer
@@ -210,7 +246,6 @@ brew cask install suspicious-package
 # brew cask install atom
 # brew cask install the-unarchiver
 # brew cask install vlc
-# brew cask install dockertoolbox
 # brew cask install teamviewer
 # brew cask install utorrent
 # brew cask install paintbrush
