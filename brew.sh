@@ -231,6 +231,7 @@ vim +PluginInstall
 
 # set up neovim
 brew install neovim/neovim/neovim
+mkdir $HOME/.config
 ln -s ~/.vim ~/.config/nvim
 ln -s ~/.vimrc ~/.config/nvim/init.vim
 # install python neovim module
