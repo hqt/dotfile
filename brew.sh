@@ -19,17 +19,13 @@ brew update
 echo "upgrade all installed package"
 brew upgrade --all
 
-# Install GNU core utilities (those that come with macOS are outdated).
-# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-echo "install coreutils"
-brew install coreutils
-ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
-# Install ruby
-# must uninstall rvm first (if exist)
-# rvm implode
-# rm -r /etc/rvmrc ~/.rvmrc
-brew install rbenv ruby-build
+### RUBY SECTION ###
+# Install ruby version manager
+brew install rbenv
+rbenv init
+
+# manually install ruby
 # see all available ruby versions
 # rbenv install -list
 # install ruby versions
@@ -44,25 +40,44 @@ brew install rbenv ruby-build
 # echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
 # echo 'eval "$(rbenv init -)"' >> ~/.bash_profile #to enable shims and auto-complete
 gem install bundler
+gem install rails
+rbenv rehash # tell rbenv to see all installed gem
 
-# rvm
-# curl -L https://get.rvm.io | bash -s stable --autolibs=enabled --ruby --rails
-
-# install python
-echo "Install python. pip also included ..."
-brew install python
-pip install --upgrade setuptools
-pip install --upgrade pip
-pip intall Django
-pip install scrapy
-pip install celery
-brew install rabbitmq
+### PYTHON SECTION ###
+# install python version manager
+brew install pyenv
+# view all available python versions
+# pyenv install --list
+# select one version and install
+# pyenv install <python_version>
+# view all local pythons
+# pyenv versions
+# select python for local version. only for current user
+# pyenv local <python_version>
+# select python for global version, for all users
+# pyenv global <python_version>
+pyenv rehash # tell pyenv to see new installed packages or python version
 
 # install Java
 echo "Install Java ..."
 brew install Caskroom/cask/java
 
+# install Go
+echo "Install Go ..."
+brew install go
+
+# search tool fzf
+brew install fzf
+# install shell extensions
+/usr/local/opt/fzf/install
+
 echo "install another useful utilities ..."
+# Install GNU core utilities (those that come with macOS are outdated).
+
+# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
+echo "install coreutils"
+brew install coreutils
+ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
 # Install some other useful utilities like `sponge`.
 brew install moreutils
@@ -89,17 +104,10 @@ fi;
 # install `wget` with iri support.
 brew install wget --with-iri
 
-# install ringojs and narwhal.
-# Note that the order in which these are installed is important;
-# see http://git.io/brew-narwhal-ringo.
-brew install ringojs
-brew install narwhal
-
 # Install more recent versions of some macOS tools.
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/openssh
 brew install homebrew/dupes/screen
-brew install homebrew/php/php56 --with-gmp
 
 # Install font tools.
 brew tap bramstein/webfonttools
@@ -139,6 +147,7 @@ brew install dark-mode
 #brew install exiv2
 brew install git
 brew install git-lfs
+brew install scmpuff
 brew install lua
 brew install lynx
 brew install p7zip
@@ -187,10 +196,14 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 brew tap Goles/battery
 brew install battery
 
-# tmux
+### tmux section ###
 brew install tmux
 brew install reattach-to-user-namespace --wrap-pbcopy-pbpaste && brew link reattach-to-user-namespace
 gem install tmuxinator
+# setup tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+tmux source ~/.tmux.conf
+# install tmux plugin manually by pressing prefix + I
 
 # vim
 brew install ag
@@ -198,28 +211,36 @@ brew install vim --with-python --with-override-system-vi
 brew install macvim
 brew linkapps macvim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-git clone https://github.com/powerline/fonts.git ~/powerline &&  \
-                  cd ~/powerline && \
+# setup font for vim
+git clone https://github.com/powerline/fonts.git $HOME/Documents/powerline &&  \
+                  cd $HOME/Documents/powerline && \
                   ./install.sh && \
-                  rm -r -f ~/powerline
-git clone https://github.com/hqt/dotfile.git ~/dotfile && \
-                  cp ~/dotfile/.vimrc ~/ && \
-                  cp ~/dotfile/.tmux.conf ~/ && \
-                  cp ~/dotfile/.ideavimrc ~/ && \
-                  cp ~/dotfile/.vifmrc ~/ && \
-                  cp ~/dotfile/.zshrc ~/ && \
-                  rm -r -f ~/dotfile
+                  rm -r -f $HOME/Documents/powerline
+cd $HOME/Documents
+# setup vim plugins
+git clone https://github.com/hqt/dotfile.git $HOME/Documents/dotfile && \
+                  cp $HOME/Documents/dotfile/.vimrc ~/ && \
+                  cp $HOME/Documents/dotfile/.tmux.conf ~/ && \
+                  cp $HOME/Documents/dotfile/.ideavimrc ~/ && \
+                  cp $HOME/Documents/.zshrc ~/ && \
+                  rm -r -f $HOME/Documents/dotfile
+vim +PluginInstall
 
-brew install neovim/neovim/neovim --with-python
+# setup Powerline font manually for iterm and bash
+# https://github.com/altercation/solarize://github.com/altercation/solarized
+
+# set up neovim
+brew install neovim/neovim/neovim
 ln -s ~/.vim ~/.config/nvim
 ln -s ~/.vimrc ~/.config/nvim/init.vim
+# install python neovim module
+pip2 install --user neovim
+pip3 install --user neovim
 
 # Database
 brew install mongodb
 brew install redis
 brew install nginx
-brew install postgresql
-brew install postgis
 
 # Mac quicklook
 brew cask install qlcolorcode
@@ -262,6 +283,3 @@ chsh -s /bin/zsh
 
 # Remove outdated versions from the cellar.
 #brew cleanup
-
-# install vim plugin
-# vim +PluginInstall
