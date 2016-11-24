@@ -1,0 +1,25 @@
+[user]
+	name = Huynh Quang Thao
+	email = huynhquangthao@gmail.com
+[core]
+	excludesfile = /Users/huynhthao/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[color]
+	ui = true
+[alias]
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    gr = grep
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p
+	g = grep --break --heading --line-number
+[grep]
+	lineNumber = true
