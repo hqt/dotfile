@@ -222,7 +222,8 @@ git clone https://github.com/hqt/dotfile.git $HOME/Documents/dotfile && \
                   cp $HOME/Documents/dotfile/.vimrc ~/ && \
                   cp $HOME/Documents/dotfile/.tmux.conf ~/ && \
                   cp $HOME/Documents/dotfile/.ideavimrc ~/ && \
-                  cp $HOME/Documents/.zshrc ~/ && \
+                  cp $HOME/Documents/dotfile/.zshrc ~/ && \
+                  cp -r $HOME/Documents/dotfile/plugin ~/.vim && \
                   rm -r -f $HOME/Documents/dotfile
 vim +PluginInstall
 
