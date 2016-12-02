@@ -28,6 +28,7 @@
   Plugin 'jistr/vim-nerdtree-tabs'        " using nerdtree and tab independent
   " Utility
   Plugin 'tpope/vim-fugitive'             " Git wrapper.
+  Plugin 'tpope/vim-unimpaired'           " pair of braket mapping (such next cnext/cprevious bnext/bprevious ....)
   Plugin 'airblade/vim-gitgutter'         " Show git diff at sidebar. maybe conflict with bookmark
   Plugin 't9md/vim-choosewin'             " choose window in vim like vimium :D can use :cw or :f (simulate Vimimum)
   Plugin 'MattesGroeger/vim-bookmarks'    " global bookmark in VIM (ma and mm hotkey)
@@ -38,6 +39,7 @@
   "Plugin 'AutoTag'                        " after saving file, auto delete old data and re-create new one
   " Plugin 'scrooloose/syntastic'           " syntax check programming languages (run :si or :SyntasticInfo)
   " Plugin 'Valloric/YouCompleteMe'         " strong autocomplete for many languages
+Plugin 'Shougo/deoplete.nvim'              " Auto complete for neovim
   " Syntax hightlight
   Plugin 'ekalinin/Dockerfile.vim'        " syntax hightlight for docker
   Plugin 'skammer/vim-css-color'          " css color for css file
@@ -193,7 +195,7 @@ set timeout timeoutlen=1000 ttimeoutlen=100
 set laststatus=2
 
 " Set the status line to something useful
-set statusline=%f\ %=L:%l/%L\ %c\ (%p%%)
+set statusline=%f%{fugitive#statusline()}\ %=L:%l/%L\ %c\ (%p%%)
 
 " Hide the toolbar
 set guioptions-=T
@@ -325,6 +327,20 @@ nmap <leader>tb :TagbarToggle<CR>
 
 " MRU configuration
 map :mru :MRU<cr>
+
+" git fugitve
+map :gg :Ggrep
+map :gl :Gblame<CR>
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#file#enable_buffer_path = 1
+" inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+" inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+" inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+" inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+" inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
+" inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"pumvisible() ? "\" : "\
 
 " Gist authorisation settings
 let g:github_user                  = $GITHUB_USER
@@ -524,6 +540,9 @@ au FocusGained,BufEnter * :silent! !
 " When switching panes in tmux, an escape sequence is printed. Redrawing gets
 " rid of it. See https://gist.github.com/mislav/5189704#comment-951447
 au FocusLost * :redraw!
+
+" auto open quicklist after git grep
+autocmd QuickFixCmdPost *grep* cwindow
 
 " jump to last cursor
 autocmd BufReadPost *
