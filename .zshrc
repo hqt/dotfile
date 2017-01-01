@@ -113,10 +113,13 @@ prompt_context() {
       prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
   fi
 }
+eval "$(pyenv init -)"
 eval "$(rbenv init -)"
 eval "$(scmpuff init -s)"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/android-sdk/ndk-bundle:$PATH"
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 export THEOS="/opt/theos"
 export THEOS_DEVICE_IP='192.168.1.10'
 export GO15VENDOREXPERIMENT=1

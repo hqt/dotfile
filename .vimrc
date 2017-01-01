@@ -60,6 +60,8 @@ Plugin 'Shougo/deoplete.nvim'              " Auto complete for neovim
   Plugin 'junegunn/vim-easy-align'        " allign code
   Plugin 'tpope/vim-commentary'           " comment code utilities. gcc(line) gc(visual mode -> block) gc(normal mode -> motion)
   Plugin 'godlygeek/tabular'              " format code tabular
+  " Javascript plugin
+  Plugin 'flowtype/vim-flow'              " facebook javascript checking
   " Ruby plugin
   Plugin 'kana/vim-textobj-user'          " generic text object selection
   Plugin 'nelstrom/vim-textobj-rubyblock' " select text object in vim such as inside loop, if, method
@@ -302,6 +304,10 @@ let g:syntastic_check_on_open            = 0
 let g:syntastic_check_on_wq              = 0
 let g:syntastic_mode_map                 = { 'mode': 'passive' }
 
+" Facebook flow
+let g:flow#enable = 1
+let g:flow#omnifunc = 1
+
 " Go
 let g:go_highlight_functions         = 1
 let g:go_highlight_methods           = 1
@@ -328,13 +334,9 @@ nmap <leader>tb :TagbarToggle<CR>
 " MRU configuration
 map :mru :MRU<cr>
 
-" git fugitve
-map :gg :Ggrep
-map :gl :Gblame<CR>
-
 " deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#file#enable_buffer_path = 1
+" let g:deoplete#enable_at_startup = 1
+" let g:deoplete#file#enable_buffer_path = 1
 " inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
 " inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
 " inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
@@ -443,6 +445,10 @@ map <Leader>cs :Tabularize /:\zs<cr>
 map <leader>yd :bufdo bd<cr>
 
 " fugitive git bindings
+" git fugitive
+map :gg :Ggrep
+map :gl :Gblame<CR>
+
 nnoremap <space>ga :Git add %:p<CR><CR>
 nnoremap <space>gs :Gstatus<CR>
 nnoremap <space>gc :Gcommit -v -q<CR>
@@ -572,7 +578,7 @@ autocmd Bufread,BufNewFile *.json set ft=javascript
 " Always highlight column 80 so it's easier to see where
 " cutoff appears on longer screens
 autocmd BufWinEnter * highlight ColorColumn ctermbg=darkred
-set colorcolumn=80
+" set colorcolumn=80
 
 " Highlight words to avoid in tech writing
 " http://css-tricks.com/words-avoid-educational-writing/

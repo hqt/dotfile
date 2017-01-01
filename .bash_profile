@@ -1,4 +1,10 @@
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="/usr/local/opt/android-sdk/ndk-bundle:$PATH"
+export ANDROID_HOME="/usr/local/opt/android-sdk"
+export PATH=${ANDROID_HOME}/tools:$PATH"
+export PATH=${ANDROID_HOME}/platform-tools:$PATH"
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 eval "$(scmpuff init -s)"
 eval "$(rbenv init -)"
+eval "$(pyenv init -)"

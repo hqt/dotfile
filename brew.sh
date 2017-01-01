@@ -66,6 +66,9 @@ brew install Caskroom/cask/java
 echo "Install Go ..."
 brew install go
 
+# flow for javascript type checking
+brew install flow
+
 # search tool fzf
 brew install fzf
 # install shell extensions
