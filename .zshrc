@@ -119,6 +119,9 @@ eval "$(scmpuff init -s)"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/android-sdk/ndk-bundle:$PATH"
+export ANDROID_HOME="/usr/local/opt/android-sdk"
+export PATH=${ANDROID_HOME}/tools:$PATH"
+export PATH=${ANDROID_HOME}/platform-tools:$PATH"
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 export THEOS="/opt/theos"
 export THEOS_DEVICE_IP='192.168.1.10'
