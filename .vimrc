@@ -17,6 +17,7 @@
 
   " Add plugins from here
   " Theme
+  Plugin 'dracula/vim'                    " Dracula style
   Plugin 'vim-airline/vim-airline'        " vim status and tabline theme. base on powerline
   Plugin 'vim-airline/vim-airline-themes'
   Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
@@ -34,6 +35,7 @@
   Plugin 'MattesGroeger/vim-bookmarks'    " global bookmark in VIM (ma and mm hotkey)
   Plugin 'tpope/vim-dispatch'             " run asynchronous command
   Plugin 'junegunn/fzf.vim'               " Searching in vim using fzf
+  Plugin 'jceb/vim-orgmode'               " org mode for vim (todo, table ....)
   " Auto complete
   "Plugin 'majutsushi/tagbar'              " browse the tags of the current files and overview of its structure
   "Plugin 'AutoTag'                        " after saving file, auto delete old data and re-create new one
@@ -75,6 +77,8 @@ Plugin 'Shougo/deoplete.nvim'              " Auto complete for neovim
   "Plugin 'ecomba/vim-ruby-refactoring'    " refactoring for ruby
   " Go
   Plugin 'fatih/vim-go'                   " Plugin for go language
+  " Scala
+  Plugin 'derekwyatt/vim-scala'           " Plugin for scala language
   " JavaScript
   Plugin 'pangloss/vim-javascript'        " javascript syntax hightlight
   Plugin 'mxw/vim-jsx' 										" react jsx syntax hightlight
@@ -117,6 +121,9 @@ let mapleader = ";"
 " Tomorrow Theme
 set background=light
 colorscheme Tomorrow-Night
+
+" Dracula
+" color dracula
 
 " enable mouse in all mode
 set mouse=a
@@ -486,14 +493,14 @@ map <leader>w[ <C-W>= " equalize all windows
 " See also <https://gist.github.com/8114940>
 
 " Run currently open RSpec test file
-map <Leader>rf :w<cr>:!rspec % --format nested<cr>
+map <Leader>rf :w<cr>:!bundle exec rspec % --format documentation<cr>
 
 " Run current RSpec test
 " RSpec is clever enough to work out the test to run if the cursor is on any line within the test
-map <Leader>rl :w<cr>:exe "!rspec %" . ":" . line(".")<cr>
+map <Leader>rt :w<cr>:exe "!bundle exec rspec %" . ":" . line(".")<cr>
 
 " Run all RSpec tests
-map <Leader>rt :w<cr>:!rspec --format nested<cr> CtrlH on nvim acts as backspace. we must give a little hack here
+map <Leader>rat :w<cr>:! bundle exec rspec --format nested<cr> CtrlH on nvim acts as backspace. we must give a little hack here
 
 " bug in nvim. Control+H -> backspace. so we order backspace again to tmux
 " navigator
