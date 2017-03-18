@@ -2,7 +2,7 @@
 	name = Huynh Quang Thao
 	email = huynhquangthao@gmail.com
 [core]
-	excludesfile = /Users/huynhthao/.gitignore_global
+	excludesfile = /Users/hqt/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -23,3 +23,5 @@
 	g = grep --break --heading --line-number
 [grep]
 	lineNumber = true
+[rebase]
+	missingCommitsCheck = error
