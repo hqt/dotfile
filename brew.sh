@@ -121,7 +121,6 @@ brew install woff2
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
 echo "install CTF - security research tools"
 brew install aircrack-ng
-brew install bfg
 brew install binutils
 brew install binwalk
 brew install cifer
@@ -142,6 +141,10 @@ brew install tcpreplay
 brew install tcptrace
 brew install ucspi-tcp # `tcpserver` etc.
 brew install xz
+
+# git tools
+brew install bfg
+brew install git-extras
 
 # Install other useful binaries.
 brew install ack
