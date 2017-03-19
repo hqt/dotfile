@@ -143,6 +143,9 @@ brew install ucspi-tcp # `tcpserver` etc.
 brew install xz
 
 # git tools
+brew install git
+brew install git-lfs
+brew install scmpuff
 brew install bfg
 brew install git-extras
 
@@ -151,9 +154,6 @@ brew install ack
 brew install dark-mode
 
 #brew install exiv2
-brew install git
-brew install git-lfs
-brew install scmpuff
 brew install lua
 brew install lynx
 brew install p7zip
