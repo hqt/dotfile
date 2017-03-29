@@ -207,6 +207,9 @@ set shiftwidth=4
 " Turn on line numbers
 set number
 
+" relative line
+set relativenumber
+
 " Highlight tailing whitespace
 set list listchars=tab:\ \ ,trail:·
 
