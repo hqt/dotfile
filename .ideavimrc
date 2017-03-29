@@ -1,4 +1,4 @@
 "Custom Mapping {{{
+set clipboard+=unnamed
 set number
-inoremap jk <esc>
-}}}
+set relativenumber
