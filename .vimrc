@@ -23,12 +23,14 @@
   Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
   Plugin 'altercation/vim-colors-solarized'
   Plugin 'morhetz/gruvbox'                " Color scheme for vim
+  Plugin 'google/vim-colorscheme-primary' " Google color scheme
   " Nerdtree
   Plugin 'scrooloose/nerdTree'            " directory tree, press :ns
   Plugin 'Xuyuanp/nerdtree-git-plugin'    " view git status on nerdtree
   Plugin 'jistr/vim-nerdtree-tabs'        " using nerdtree and tab independent
   " Utility
   Plugin 'tpope/vim-fugitive'             " Git wrapper.
+  Plugin 'christoomey/vim-conflicted'     " wrapper of vim-fugitive for resolving git conflict
   Plugin 'tpope/vim-unimpaired'           " pair of braket mapping (such next cnext/cprevious bnext/bprevious ....)
   Plugin 'airblade/vim-gitgutter'         " Show git diff at sidebar. maybe conflict with bookmark
   Plugin 't9md/vim-choosewin'             " choose window in vim like vimium :D can use :cw or :f (simulate Vimimum)
@@ -124,6 +126,18 @@ colorscheme Tomorrow-Night
 
 " Dracula
 " color dracula
+
+" Google light color scheme
+" syntax enable
+" set t_Co=256
+" set background=light
+" colorscheme primary
+
+" Google dark color scheme
+" syntax enable
+" set t_Co=256
+" set background=dark
+" colorscheme primary
 
 " enable mouse in all mode
 set mouse=a
