@@ -44,6 +44,7 @@
   " Plugin 'scrooloose/syntastic'           " syntax check programming languages (run :si or :SyntasticInfo)
   " Plugin 'Valloric/YouCompleteMe'         " strong autocomplete for many languages
 Plugin 'Shougo/deoplete.nvim'              " Auto complete for neovim
+Plugin 'Shougo/neco-vim'                  " Auto complete for vimscript based on deoplete
   " Syntax hightlight
   Plugin 'ekalinin/Dockerfile.vim'        " syntax hightlight for docker
   Plugin 'skammer/vim-css-color'          " css color for css file
@@ -359,12 +360,14 @@ nmap <leader>tb :TagbarToggle<CR>
 map :mru :MRU<cr>
 
 " deoplete
-" let g:deoplete#enable_at_startup = 1
-" let g:deoplete#file#enable_buffer_path = 1
+let g:deoplete#enable_at_startup       = 1
+let g:deoplete#file#enable_buffer_path = 1
+let g:deoplete#enable_ignore_case      = 1
+
 " inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
 " inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
-" inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-" inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+" inoremap <expr> <Down>     pumvisible() ? "\<C-j>" : "\<Down>"
+" inoremap <expr> <Up>       pumvisible() ? "\<C-k>" : "\<Up>"
 " inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
 " inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"pumvisible() ? "\" : "\
 
@@ -417,6 +420,8 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 let g:nerdtree_tabs_open_on_gui_startup = 0
+" let NERDTreeMinimalUI = 1
+" let NERDTreeDirArrows = 1
 
 " nerdtree internal hotkey
 let NERDTreeMapOpenSplit  = '-'
