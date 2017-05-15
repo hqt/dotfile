@@ -496,6 +496,10 @@ nnoremap <space>gpl :Dispatch! git pull<CR>
 
 " Vim window size management
 
+" change keybinding up/down for vim popup menu
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+
 " resize vim panel
 map _ <c-w>- " decrement height
 map + <c-w>+ " increment height
