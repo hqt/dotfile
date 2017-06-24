@@ -48,6 +48,7 @@ Plugin 'Shougo/neco-vim'                  " Auto complete for vimscript based on
   " Syntax hightlight
   Plugin 'ekalinin/Dockerfile.vim'        " syntax hightlight for docker
   Plugin 'skammer/vim-css-color'          " css color for css file
+  Plugin 'vim-css3-syntax'                " CSS3 syntax
   Plugin 'vim-scripts/JSON.vim'           " syntax for json
   " Others
   Plugin 'ctrlpvim/ctrlp.vim'             " fuzzy finding. <Ctrl+O> for viewing option
@@ -66,7 +67,7 @@ Plugin 'Shougo/neco-vim'                  " Auto complete for vimscript based on
   Plugin 'tpope/vim-commentary'           " comment code utilities. gcc(line) gc(visual mode -> block) gc(normal mode -> motion)
   Plugin 'godlygeek/tabular'              " format code tabular
   " Javascript plugin
-  Plugin 'flowtype/vim-flow'              " facebook javascript checking
+  " Plugin 'flowtype/vim-flow'              " facebook javascript checking
   " Ruby plugin
   Plugin 'kana/vim-textobj-user'          " generic text object selection
   Plugin 'nelstrom/vim-textobj-rubyblock' " select text object in vim such as inside loop, if, method
