@@ -1,108 +1,110 @@
-  " Pathogen configuration {{{
-  " Pathogen configuration
-  " call pathogen#infect()
+" Pathogen configuration {{{
+" Pathogen configuration
+" call pathogen#infect()
 
-  " Vundle configuration
-  " set nocompatible              " be iMproved, required
-  filetype off                  " required
+" Vundle configuration
+" set nocompatible              " be iMproved, required
+filetype off                  " required
 
-  " set the runtime path to include Vundle and initialize
-  set rtp+=~/.vim/bundle/Vundle.vim
-  call vundle#begin()
-  " " alternatively, pass a path where Vundle should install plugins
-  " "call vundle#begin('~/some/path/here')
-  "
-  " " let Vundle manage Vundle, required
-  Plugin 'VundleVim/Vundle.vim'
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" " alternatively, pass a path where Vundle should install plugins
+" "call vundle#begin('~/some/path/here')
+"
+" " let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
-  " Add plugins from here
-  " Theme
-  Plugin 'dracula/vim'                    " Dracula style
-  Plugin 'vim-airline/vim-airline'        " vim status and tabline theme. base on powerline
-  Plugin 'vim-airline/vim-airline-themes'
-  Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-  Plugin 'altercation/vim-colors-solarized'
-  Plugin 'morhetz/gruvbox'                " Color scheme for vim
-  Plugin 'google/vim-colorscheme-primary' " Google color scheme
-  " Nerdtree
-  Plugin 'scrooloose/nerdTree'            " directory tree, press :ns
-  Plugin 'Xuyuanp/nerdtree-git-plugin'    " view git status on nerdtree
-  Plugin 'jistr/vim-nerdtree-tabs'        " using nerdtree and tab independent
-  " Utility
-  Plugin 'tpope/vim-fugitive'             " Git wrapper.
-  Plugin 'christoomey/vim-conflicted'     " wrapper of vim-fugitive for resolving git conflict
-  Plugin 'tpope/vim-unimpaired'           " pair of braket mapping (such next cnext/cprevious bnext/bprevious ....)
-  Plugin 'airblade/vim-gitgutter'         " Show git diff at sidebar. maybe conflict with bookmark
-  Plugin 't9md/vim-choosewin'             " choose window in vim like vimium :D can use :cw or :f (simulate Vimimum)
-  Plugin 'MattesGroeger/vim-bookmarks'    " global bookmark in VIM (ma and mm hotkey)
-  Plugin 'tpope/vim-dispatch'             " run asynchronous command
-  Plugin 'junegunn/fzf.vim'               " Searching in vim using fzf
-  Plugin 'jceb/vim-orgmode'               " org mode for vim (todo, table ....)
-  " Auto complete
-  "Plugin 'majutsushi/tagbar'              " browse the tags of the current files and overview of its structure
-  "Plugin 'AutoTag'                        " after saving file, auto delete old data and re-create new one
-  " Plugin 'scrooloose/syntastic'           " syntax check programming languages (run :si or :SyntasticInfo)
-  " Plugin 'Valloric/YouCompleteMe'         " strong autocomplete for many languages
+" Add plugins from here
+" Theme
+Plugin 'dracula/vim'                    " Dracula style
+Plugin 'vim-airline/vim-airline'        " vim status and tabline theme. base on powerline
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'morhetz/gruvbox'                " Color scheme for vim
+Plugin 'google/vim-colorscheme-primary' " Google color scheme
+" Nerdtree
+Plugin 'scrooloose/nerdTree'            " directory tree, press :ns
+Plugin 'Xuyuanp/nerdtree-git-plugin'    " view git status on nerdtree
+Plugin 'jistr/vim-nerdtree-tabs'        " using nerdtree and tab independent
+" Utility
+Plugin 'tpope/vim-obsession'            " continuously updated session files
+Plugin 'tpope/vim-fugitive'             " Git wrapper.
+Plugin 'christoomey/vim-conflicted'     " wrapper of vim-fugitive for resolving git conflict
+Plugin 'tpope/vim-unimpaired'           " pair of braket mapping (such next cnext/cprevious bnext/bprevious ....)
+Plugin 'airblade/vim-gitgutter'         " Show git diff at sidebar. maybe conflict with bookmark
+Plugin 't9md/vim-choosewin'             " choose window in vim like vimium :D can use :cw or :f (simulate Vimimum)
+Plugin 'MattesGroeger/vim-bookmarks'    " global bookmark in VIM (ma and mm hotkey)
+Plugin 'tpope/vim-dispatch'             " run asynchronous command
+Plugin 'junegunn/fzf.vim'               " Searching in vim using fzf
+Plugin 'jceb/vim-orgmode'               " org mode for vim (todo, table ....)
+" Auto complete
+"Plugin 'majutsushi/tagbar'              " browse the tags of the current files and overview of its structure
+"Plugin 'AutoTag'                        " after saving file, auto delete old data and re-create new one
+" Plugin 'scrooloose/syntastic'           " syntax check programming languages (run :si or :SyntasticInfo)
+" Plugin 'Valloric/YouCompleteMe'         " strong autocomplete for many languages
 Plugin 'Shougo/deoplete.nvim'              " Auto complete for neovim
 Plugin 'Shougo/neco-vim'                  " Auto complete for vimscript based on deoplete
-  " Syntax hightlight
-  Plugin 'ekalinin/Dockerfile.vim'        " syntax hightlight for docker
-  Plugin 'skammer/vim-css-color'          " css color for css file
-  Plugin 'vim-css3-syntax'                " CSS3 syntax
-  Plugin 'vim-scripts/JSON.vim'           " syntax for json
-  " Others
-  Plugin 'ctrlpvim/ctrlp.vim'             " fuzzy finding. <Ctrl+O> for viewing option
-  Plugin 'mileszs/ack.vim'                " ack plugin for vim. can be used for Ag as well
-  Plugin 'mru.vim'                        " finding files in mru
-  Plugin 'tpope/vim-repeat'               " enhance repeating function in vim
-  Plugin 'svermeulen/vim-easyclip'        " easier for vim register management such as yank/cut/delete. or management register 1->9 more robust
-  Plugin 'tpope/vim-surround'             " change surrounding (paren, bracket, tag ...) in pair (cs and ds)
-  Plugin 'ervandew/supertab'              " Simple autocompletion base on typed words
-  Plugin 'gcmt/wildfire.vim'              " smart select closed text object (base on paren)
-  Plugin 'easymotion/vim-easymotion'      " easier for motion
-  Plugin 'christoomey/vim-tmux-navigator' " seamless switch panel between tmux and and vim
-  Plugin 'terryma/vim-multiple-cursors'   " multi cusor like Sublime (remember hotkey Control + N)
-  " Code format generic
-  Plugin 'junegunn/vim-easy-align'        " allign code
-  Plugin 'tpope/vim-commentary'           " comment code utilities. gcc(line) gc(visual mode -> block) gc(normal mode -> motion)
-  Plugin 'godlygeek/tabular'              " format code tabular
-  " Javascript plugin
-  " Plugin 'flowtype/vim-flow'              " facebook javascript checking
-  " Ruby plugin
-  Plugin 'kana/vim-textobj-user'          " generic text object selection
-  Plugin 'nelstrom/vim-textobj-rubyblock' " select text object in vim such as inside loop, if, method
-  Plugin 'tpope/vim-endwise'              " wisely add end in Ruby
-  Plugin 'tpope/vim-haml'                 " syntax hightlight for haml
-  Plugin 'slim-template/vim-slim'         " syntax highlight for slim
-  "Plugin 'tpope/vim-bundler'
-  "Plugin 'tpope/vim-rake'
-  "Plugin 'tpope/vim-rails'
-  "Plugin 'vim-ruby/vim-ruby'
-  "Plugin 'ecomba/vim-ruby-refactoring'    " refactoring for ruby
-  " Go
-  Plugin 'fatih/vim-go'                   " Plugin for go language
-  " Scala
-  Plugin 'derekwyatt/vim-scala'           " Plugin for scala language
-  " JavaScript
-  Plugin 'pangloss/vim-javascript'        " javascript syntax hightlight
-  Plugin 'mxw/vim-jsx' 										" react jsx syntax hightlight
+" Syntax hightlight
+Plugin 'ekalinin/Dockerfile.vim'        " syntax hightlight for docker
+Plugin 'skammer/vim-css-color'          " css color for css file
+Plugin 'vim-scripts/JSON.vim'           " syntax for json
+" Others
+Plugin 'ctrlpvim/ctrlp.vim'             " fuzzy finding. <Ctrl+O> for viewing option
+Plugin 'mileszs/ack.vim'                " ack plugin for vim. can be used for Ag as well
+Plugin 'mru.vim'                        " finding files in mru
+Plugin 'tpope/vim-repeat'               " enhance repeating function in vim
+Plugin 'svermeulen/vim-easyclip'        " easier for vim register management such as yank/cut/delete. or management register 1->9 more robust
+Plugin 'tpope/vim-surround'             " change surrounding (paren, bracket, tag ...) in pair (cs and ds)
+Plugin 'ervandew/supertab'              " Simple autocompletion base on typed words
+Plugin 'gcmt/wildfire.vim'              " smart select closed text object (base on paren)
+Plugin 'easymotion/vim-easymotion'      " easier for motion
+Plugin 'christoomey/vim-tmux-navigator' " seamless switch panel between tmux and and vim
+Plugin 'terryma/vim-multiple-cursors'   " multi cusor like Sublime (remember hotkey Control + N)
+" Code format generic
+Plugin 'junegunn/vim-easy-align'        " allign code
+Plugin 'tpope/vim-commentary'           " comment code utilities. gcc(line) gc(visual mode -> block) gc(normal mode -> motion)
+Plugin 'godlygeek/tabular'              " format code tabular
+" Javascript plugin
+" Plugin 'flowtype/vim-flow'              " facebook javascript checking
+" Ruby plugin
+Plugin 'kana/vim-textobj-user'          " generic text object selection
+Plugin 'nelstrom/vim-textobj-rubyblock' " select text object in vim such as inside loop, if, method
+Plugin 'tpope/vim-endwise'              " wisely add end in Ruby
+Plugin 'tpope/vim-haml'                 " syntax hightlight for haml
+Plugin 'slim-template/vim-slim'         " syntax highlight for slim
+"Plugin 'tpope/vim-bundler'
+"Plugin 'tpope/vim-rake'
+"Plugin 'tpope/vim-rails'
+"Plugin 'vim-ruby/vim-ruby'
+"Plugin 'ecomba/vim-ruby-refactoring'    " refactoring for ruby
+" Go
+Plugin 'fatih/vim-go'                   " Plugin for go language
+" Scala
+Plugin 'derekwyatt/vim-scala'           " Plugin for scala language
+" Kotlin
+Plugin 'udalov/kotlin-vim'              " Plugin for kotlin language
+" JavaScript
+Plugin 'pangloss/vim-javascript'        " javascript syntax hightlight
+Plugin 'mxw/vim-jsx' 										" react jsx syntax hightlight
 
-  " All of your Plugins must be added before the following line
-   call vundle#end()            " required
-   filetype plugin indent on    " required
-   " To ignore plugin indent changes, instead use:
-   "filetype plugin on
-   "
-   " Brief help
-   " :PluginList       - lists configured plugins
-   " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-   " :PluginSearch foo - searches for foo; append `!` to refresh local cache
-   " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-   "
-   " see :h vundle for more details or wiki for FAQ
-   " Put your non-Plugin stuff after this line
-   " after install. run following line for auto load vim configuration
-   " :so $MYVIMRC
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+" after install. run following line for auto load vim configuration
+" :so $MYVIMRC
 
    " }}}
 
@@ -319,6 +321,7 @@ let g:ctrlp_custom_ignore = '\v[\/]((node_modules)|\.(git|svn|grunt|sass-cache))
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " Syntastic. (config so more easily use at first time)
+set statusline+=%{ObsessionStatus()}
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*

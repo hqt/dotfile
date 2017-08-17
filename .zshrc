@@ -86,6 +86,8 @@ export EDITOR='nvim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias nv="nvim"
 
+alias vim='nocorrect zeus rspec'
+
 # change workflow of switch back and forth from vim to command line
 # before: Vim -> Control + Z -> Command line -> fg enter    -> Vim
 # After:  Vim -> Control + Z -> Command line -> Control + Z -> Vim
@@ -120,8 +122,9 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/android-sdk/ndk-bundle:$PATH"
 export ANDROID_HOME="/usr/local/opt/android-sdk"
-export PATH=${ANDROID_HOME}/tools:$PATH"
-export PATH=${ANDROID_HOME}/platform-tools:$PATH"
+export PATH="${ANDROID_HOME}/tools:$PATH"
+export PATH="${ANDROID_HOME}/platform-tools:$PATH"
+export PATH="/usr/local/bin/:$PATH"
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 export THEOS="/opt/theos"
 export THEOS_DEVICE_IP='192.168.1.10'
@@ -131,3 +134,5 @@ export PATH="$GOPATH/bin:/opt/theos/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+
+eval $(thefuck --alias)
