@@ -23,6 +23,7 @@ brew upgrade --all
 ### RUBY SECTION ###
 # Install ruby version manager
 brew install rbenv
+brew upgrade ruby-build
 rbenv init
 
 # manually install ruby
