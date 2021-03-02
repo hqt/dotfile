@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# step 1: install https://emacsformacosx.com
+# step 2: move this file to ~/bin or /usr/local/bin
+/Applications/Emacs.app/Contents/MacOS/Emacs "$@"
